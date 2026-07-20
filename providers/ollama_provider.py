@@ -66,7 +66,13 @@ class OllamaProvider(BaseProvider):
         payload = {
             "model": model,
             "prompt": prompt,
-            "stream": False
+            "stream": False,
+            "options": {
+                "temperature": 0.2,
+                "top_p": 0.9,
+                "num_predict": 8192,
+                "repeat_penalty": 1.1
+            }
         }
 
         try:
@@ -80,6 +86,10 @@ class OllamaProvider(BaseProvider):
             response.raise_for_status()
 
             data = response.json()
+
+            print("DONE:", data.get("done"))
+            print("DONE REASON:", data.get("done_reason"))
+            print("EVAL COUNT:", data.get("eval_count"))
 
             return data.get("response", "")
 

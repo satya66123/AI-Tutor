@@ -9,9 +9,11 @@ from pages.about.about_page import AboutPage
 from pages.dashboard.dashboard_page import DashboardPage
 from pages.home import HomePage
 from pages.planner.planner_page import PlannerPage
+from pages.quiz.quiz_page import QuizPage
 from pages.settings.settings_page import SettingsPage
 from pages.tutor.tutor_page import TutorPage
 from pages.tutor.stats import ChatStats
+from pages.flashcards.flashcards_page import render as flashcards_page
 
 from ui.header import Header
 from ui.sidebar import Sidebar
@@ -64,6 +66,11 @@ pages = [
 
     "📚 Study Planner",
 
+    "📝 Quiz Generator",
+
+    "📚 Flashcards",
+
+
     "⚙ Settings",
 
     "ℹ About"
@@ -109,7 +116,12 @@ elif page == "ℹ About":
 
     AboutPage.render()
 
+elif page == "📝 Quiz Generator":
 
+    QuizPage.render()
+
+elif page == "📚 Flashcards":
+    flashcards_page()
 
 # ---------------------------------------------------
 # Sidebar Statistics
