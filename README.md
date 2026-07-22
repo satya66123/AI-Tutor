@@ -4,6 +4,14 @@ Description: An AI-powered tutor application with multiple LLM providers, study 
 
 # 🎓 Enterprise AI Tutor
 
+<div align="center">
+
+<a href="https://github.com/satya66123/AI-Tutor">
+<img src="assets/ai_tutor.png" width="100%">
+</a>
+
+</div>
+
 ### An Enterprise-Grade AI Learning Platform Powered by Multiple LLM Providers
 
 AI Tutor • Enterprise RAG • Voice AI • Study Planner • Learning Analytics • Interview Preparation
@@ -178,6 +186,34 @@ AI-Tutor/
 ├── requirements.txt
 └── README.md
 ```
+
+---
+
+## 📸 Application Screenshots
+
+| Home | Dashboard |
+|------|-----------|
+| <img src="assets/screenshots/home.png" width="450"> | <img src="assets/screenshots/dashboard.png" width="450"> |
+
+| AI Tutor | AI Mentor |
+|----------|-----------|
+| <img src="assets/screenshots/aitutor.png" width="450"> | <img src="assets/screenshots/aimentor.png" width="450"> |
+
+| PDF Tutor | Coding Tutor |
+|-----------|--------------|
+| <img src="assets/screenshots/pdftutor.png" width="450"> | <img src="assets/screenshots/codingtutor.png" width="450"> |
+
+| Voice Tutor | Enterprise RAG |
+|-------------|----------------|
+| <img src="assets/screenshots/voicetutor.png" width="450"> | <img src="assets/screenshots/rag.png" width="450"> |
+
+| Quiz | Flashcards |
+|------|------------|
+| <img src="assets/screenshots/quiz.png" width="450"> | <img src="assets/screenshots/flashcards.png" width="450"> |
+
+| Notes | Learning Analytics |
+|-------|---------------------|
+| <img src="assets/screenshots/notes.png" width="450"> | <img src="assets/screenshots/learninganalyticsdashboard.png" width="450"> |
 
 ---
 
