@@ -25,16 +25,14 @@ class ChatStats:
             if m["role"] == "assistant"
         )
 
-        st.sidebar.divider()
+        st.divider()
 
-        st.sidebar.caption("### Chat Statistics")
+        st.subheader("💬 Chat Statistics")
 
-        st.sidebar.metric(
-            "Questions",
-            users
-        )
+        col1, col2 = st.columns(2)
 
-        st.sidebar.metric(
-            "Responses",
-            assistants
-        )
+        with col1:
+            st.metric("Questions", users)
+
+        with col2:
+            st.metric("Responses", assistants)

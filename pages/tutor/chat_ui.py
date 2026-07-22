@@ -7,6 +7,7 @@ import streamlit as st
 from pages.tutor.chat_history import ChatHistory
 from pages.tutor.prompt_handler import PromptHandler
 from pages.tutor.response_renderer import ResponseRenderer
+from pages.tutor.stats import ChatStats
 from services.chat_service import ChatService
 from utils.error_handler import ErrorHandler
 
@@ -63,3 +64,13 @@ class ChatUI:
                 response,
                 stream=True
             )
+
+
+
+            ####################################################
+            # Show Statistics
+            ####################################################
+
+
+
+            ChatStats.render()

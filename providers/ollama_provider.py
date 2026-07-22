@@ -80,7 +80,7 @@ class OllamaProvider(BaseProvider):
             response = requests.post(
                 f"{self.base_url}/api/generate",
                 json=payload,
-                timeout=300
+                timeout=3000
             )
 
             response.raise_for_status()
