@@ -5,8 +5,11 @@ Main Application
 
 import streamlit as st
 
+from automation.ui.workflow_designer.workflow_designer_page import WorkflowDesignerPage
+from automation.ui.workflow_designer.workflow_history_page import WorkflowHistoryPage
 from pages.ai_mentor import ai_mentor_page
 from pages.interview_preparation import interview_preparation_page
+from pages.rag.rag_page import RAGPage
 from pages.voice.voice_page import VoicePage
 
 from pages.about.about_page import AboutPage
@@ -22,9 +25,9 @@ from pages.coding_tutor.coding_page import CodingPage
 from pages.revision_planner.reviuson_planner_page import RevisionPlannerPage
 from pages.analytics.analytics_page import AnalyticsPage
 from pages.learning_history.history_page import HistoryPage
-from pages.rag.rag_page import RAGPage
-
 from ui.header import Header
+
+#from ui.header import Header
 from ui.sidebar import Sidebar
 from ui.footer import Footer
 from pages.notes.notes_page import render as notes_page
@@ -43,6 +46,20 @@ st.set_page_config(
 
 
 # ---------------------------------------------------
+# Session State Initialization
+# ---------------------------------------------------
+
+DEFAULTS = {
+    "provider": None,
+    "model": None,
+    "page": "📊 Dashboard"
+}
+
+for key, value in DEFAULTS.items():
+    st.session_state.setdefault(key, value)
+
+
+# ---------------------------------------------------
 # Header
 # ---------------------------------------------------
 
@@ -57,6 +74,10 @@ provider, model = Sidebar.render()
 
 st.session_state["provider"] = provider
 st.session_state["model"] = model
+
+# Initialize app only once
+if "initialized" not in st.session_state:
+    st.session_state["initialized"] = True
 
 if "page" not in st.session_state:
     st.session_state.page = "📊 Dashboard"
@@ -100,6 +121,10 @@ pages = [
 
     "🎤 Interview Preparation",      # NEW
 
+    "⚙️ Workflow Designer",
+
+   "📜 Workflow History",
+
     "⚙ Settings",
 
     "ℹ About"
@@ -114,12 +139,25 @@ page = st.sidebar.radio(
 
 st.session_state.page = page
 
+st.sidebar.markdown("---")
+st.sidebar.caption("Enterprise AI Tutor")
+st.sidebar.caption("Version: v1.1.0")
 
+
+st.set_page_config(
+    page_title="Enterprise AI Tutor",
+    page_icon="🎓",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
 
 # ---------------------------------------------------
 # Pages
 # ---------------------------------------------------
+
+
+
 
 
 PAGES = {
@@ -164,18 +202,34 @@ PAGES = {
 
     "🎤 Interview Preparation": interview_preparation_page,
 
+
+    "⚙️ Workflow Designer": lambda: WorkflowDesignerPage.render(),
+
+    "📜 Workflow History": lambda: WorkflowHistoryPage.render(),
+
+
     "⚙ Settings": lambda: SettingsPage.render(),
 
     "ℹ About": lambda: AboutPage.render()
 
 }
 
-PAGES[page]()
+try:
+    if page in PAGES:
+        PAGES[page]()
+    else:
+        st.error("Page not found.")
+except Exception as e:
+    st.exception(e)
 
 # ---------------------------------------------------
 # Sidebar Statistics
 # ---------------------------------------------------
-
+st.sidebar.markdown("---")
+st.sidebar.info(
+    f"**Provider:** {provider}\n\n"
+    f"**Model:** {model}"
+)
 
 
 # ---------------------------------------------------
